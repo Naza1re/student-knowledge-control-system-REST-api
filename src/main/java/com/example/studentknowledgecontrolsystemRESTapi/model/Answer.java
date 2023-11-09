@@ -4,12 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Table(name = "answer")
-@RequiredArgsConstructor
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +18,9 @@ public class Answer {
     private String answer;
 
     @Column(name = "is_true")
-    private boolean is_true;
+    private boolean isTrue;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

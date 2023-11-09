@@ -1,20 +1,26 @@
 package com.example.studentknowledgecontrolsystemRESTapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+import java.util.List;
+
+@Table(name = "question")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Entity
-@Table(name = "question")
 public class Question {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name_of_question")
+    private String name_of_question;
 
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    private List<Answer> answerList;
+
+    @ManyToOne
+    @JoinColumn(name = "test_id")
+    private Test test;
 }

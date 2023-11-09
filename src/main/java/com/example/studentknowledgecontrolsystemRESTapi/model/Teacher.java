@@ -3,13 +3,12 @@ package com.example.studentknowledgecontrolsystemRESTapi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
+import java.util.List;
+
 @Table(name = "teacher")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +20,9 @@ public class Teacher {
     @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "age")
+    private int age;
 
-    @OneToOne
-    private Subject teacher;
-
+    @OneToMany(mappedBy = "teacher")
+    private List<Subject> subjectList;
 }

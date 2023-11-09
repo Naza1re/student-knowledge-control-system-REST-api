@@ -5,13 +5,10 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Table(name = "group_table")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Table(name = "group")
-@Entity
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +17,16 @@ public class Group {
     @Column(name = "name_of_group")
     private String name_of_group;
 
-    @OneToMany
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Student> studentList;
 
-    @ManyToMany
-    private Long<Subject> subjectList;
+    @OneToMany(mappedBy = "group")
+    private List<Subject> subjectList;
+
+    @OneToMany(mappedBy = "groups")
+    private List<Test> tests;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 }

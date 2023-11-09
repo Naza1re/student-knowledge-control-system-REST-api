@@ -5,15 +5,11 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Table(name = "subject")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Subject {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +17,11 @@ public class Subject {
     @Column(name = "name_of_subject")
     private String name_of_subject;
 
-    @ManyToMany
-    private List<Group> groupList;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
-
 }

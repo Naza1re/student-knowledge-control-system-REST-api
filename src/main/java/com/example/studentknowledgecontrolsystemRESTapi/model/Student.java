@@ -2,15 +2,16 @@ package com.example.studentknowledgecontrolsystemRESTapi.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.context.annotation.Configuration;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
+
 @Table(name = "student")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "first_name")
     private String first_name;
 
@@ -26,13 +27,7 @@ public class Student {
     @Column(name = "course")
     private int course;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     private Group group;
-
-
 }
