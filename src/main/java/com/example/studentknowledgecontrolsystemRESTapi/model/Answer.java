@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

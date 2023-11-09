@@ -9,13 +9,16 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name_of_group")
-    private String name_of_group;
+    private String name;
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Student> studentList;
