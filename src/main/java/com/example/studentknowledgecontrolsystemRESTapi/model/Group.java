@@ -1,5 +1,6 @@
 package com.example.studentknowledgecontrolsystemRESTapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,7 +26,7 @@ public class Group {
 
     @OneToMany(mappedBy = "group")
     private List<Subject> subjectList;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "groups")
     private List<Test> tests;
 

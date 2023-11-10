@@ -35,6 +35,7 @@ public class StudentController {
     }
     @DeleteMapping("/{id}/delete-student")
     public HttpStatus deleteStudentById(@PathVariable String group_name, @PathVariable Long id) throws StudentNotFoundException {
-        return studentService.deleteStudentById(id);
+        return studentService.
+                deleteStudentById(id);
     }
 }
