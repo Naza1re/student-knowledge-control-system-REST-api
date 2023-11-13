@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/{group_name}/students")
+@RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
 
