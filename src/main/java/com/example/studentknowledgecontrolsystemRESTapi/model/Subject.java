@@ -1,5 +1,6 @@
 package com.example.studentknowledgecontrolsystemRESTapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,9 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+    @JsonIgnore
+    @OneToMany(mappedBy = "subject")
+    private List<Test> tests;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")

@@ -5,6 +5,7 @@ import com.example.studentknowledgecontrolsystemRESTapi.model.Subject;
 import com.example.studentknowledgecontrolsystemRESTapi.model.Teacher;
 import com.example.studentknowledgecontrolsystemRESTapi.repository.SubjectRepository;
 import com.example.studentknowledgecontrolsystemRESTapi.repository.TeacherRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class TeacherService {
 
     private final TeacherRepository teacherRepository;
     private final SubjectRepository subjectRepository;
-
+    @Autowired
     public TeacherService(TeacherRepository teacherRepository, SubjectRepository subjectRepository) {
         this.teacherRepository = teacherRepository;
         this.subjectRepository = subjectRepository;

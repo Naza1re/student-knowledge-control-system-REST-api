@@ -22,8 +22,11 @@ public class Test {
     @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
     private List<Question> questionList;
 
-    // Добавлено ManyToMany отношение с Group
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group groups;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 }
